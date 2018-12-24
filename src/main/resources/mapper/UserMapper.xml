@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserMapper">
+
+    <!--成功注册-->
+    <insert id="insertuser" parameterType="com.example.demo.Model.User">
+        insert into user_info(phone,password) values(#{phone},#{password})
+    </insert>
+
+    <!--插入之前判断数据库里是否有重复用户-->
+    <select id="queryuser" parameterType="String" resultType="com.example.demo.Model.User">
+        select * from user_info where phone=#{phone}
+    </select>
+
+</mapper>
